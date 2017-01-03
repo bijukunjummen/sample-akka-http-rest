@@ -1,0 +1,69 @@
+# Sample Demonstrating Akka Http and Slick based CRUD REST operations
+
+This project demonstrates the http://doc.akka.io/docs/akka-http/current/scala.html[Akka Http] and http://slick.lightbend.com[Slick]
+
+
+## Usage
+
+Start services with sbt:
+
+[source, java]
+----
+$ sbt
+> ~re-start
+----
+
+
+### Create a Hotel
+
+[source, java]
+----
+curl -X "POST" "http://localhost:8080/hotels" \
+       -H "Accept: application/json" \
+       -H "Content-Type: application/json" \
+       -d $'{
+  "name":"Stamford Hotel",
+  "address": "Stamford",
+  "state": "ct",
+  "zip": "97006"
+  }'
+----
+
+### Get All Hotels
+
+[source, java]
+----
+curl -X "GET" "http://localhost:8080/hotels"
+----
+
+### Update Hotel
+
+[source, java]
+----
+curl -X "PUT" "http://localhost:8080/hotels/1" \
+     -H "Accept: application/json" \
+     -H "Content-Type: application/json" \
+     -d $'{
+"id": 1,
+"name":"Stamford Hotel Updated",
+"address": "Stamford",
+"state": "ct",
+"zip": "97006"
+}'
+
+----
+
+### Delete Hotel
+
+[source, java]
+----
+curl -X "DELETE" "http://localhost:8080/hotels/1" \
+     -H "Accept: application/json" \
+     -H "Content-Type: application/json"
+----
+
+
+## Acknowledgement
+
+This project is heavily based on https://github.com/ArchDev/akka-http-rest project.
+
