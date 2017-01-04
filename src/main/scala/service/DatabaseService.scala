@@ -1,17 +1,15 @@
 package service;
 
-import com.typesafe.config.Config
 import com.zaxxer.hikari.{HikariConfig, HikariDataSource}
 import model.db.DAO
 import slick.jdbc.JdbcProfile
 
-class DatabaseService(dbConfig: Config, val driver: JdbcProfile) {
+class DatabaseService(jdbcUrl: String, user: String, password: String, val driver: JdbcProfile) {
 
   private val hikariConfig = new HikariConfig()
-  hikariConfig.setJdbcUrl(dbConfig.getString("url"))
-  hikariConfig.setUsername(dbConfig.getString("user"))
-  hikariConfig.setPassword(dbConfig.getString("password"))
-  hikariConfig.setDriverClassName(dbConfig.getString("driver"))
+  hikariConfig.setJdbcUrl(jdbcUrl)
+  hikariConfig.setUsername(user)
+  hikariConfig.setPassword(password)
 
   val dataSource = new HikariDataSource(hikariConfig)
 

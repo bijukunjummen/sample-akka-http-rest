@@ -5,7 +5,20 @@ This project demonstrates the http://doc.akka.io/docs/akka-http/current/scala.ht
 
 ## Usage
 
-Start services with sbt:
+### Start up an instance of Mysql db:
+[source, plain]
+----
+brew install mysql
+mysql.server start
+mysql -u root
+
+CREATE USER 'myuser'@'LOCALHOST' IDENTIFIED BY 'mypass';
+CREATE DATABASE sampledb;
+GRANT ALL ON sampledb.* TO 'myuser'@'localhost';
+----
+
+
+### Start services with sbt:
 
 [source, java]
 ----
@@ -36,6 +49,13 @@ curl -X "POST" "http://localhost:8080/hotels" \
 curl -X "GET" "http://localhost:8080/hotels"
 ----
 
+### Get A Hotel
+
+[source, java]
+----
+curl -X "GET" "http://localhost:8080/hotels/1"
+----
+
 ### Update Hotel
 
 [source, java]
@@ -61,6 +81,16 @@ curl -X "DELETE" "http://localhost:8080/hotels/1" \
      -H "Accept: application/json" \
      -H "Content-Type: application/json"
 ----
+
+
+## Deploying to Cloud Foundry:
+
+[source, java]
+----
+cf create-service p-mysql 512mb sampledb
+cf push
+----
+
 
 
 ## Acknowledgement

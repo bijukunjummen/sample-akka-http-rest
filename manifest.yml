@@ -1,0 +1,10 @@
+---
+applications:
+  - name: sample-akka-http-rest
+    path: target/scala-2.12/sample-akka-http-rest-assembly-1.0.jar
+    memory: 1G
+    buildpack: https://github.com/cloudfoundry/java-buildpack.git
+    env:
+      JAVA_OPTS: -Djava.security.egd=file:/dev/./urandom
+    services:
+      - sampledb

@@ -30,20 +30,23 @@ class HotelRoutes(val hotelService: HotelService) extends Protocols {
           }
       } ~
         pathPrefix(LongNumber) { id =>
-          put {
-            entity(as[Hotel]) { hotelForUpdate =>
-              complete {
-                hotelService.update(id, hotelForUpdate)
+          get {
+            complete {
+              hotelService.getHotel(id)
+            }
+          } ~
+            put {
+              entity(as[Hotel]) { hotelForUpdate =>
+                complete {
+                  hotelService.update(id, hotelForUpdate)
+                }
+              }
+            } ~
+            delete {
+              onSuccess(hotelService.deleteHotel(id)) { _ =>
+                complete(NoContent)
               }
             }
-          }
-        } ~
-        pathPrefix(LongNumber) { id =>
-          delete {
-            onSuccess(hotelService.deleteHotel(id)) { _ =>
-              complete(NoContent)
-            }
-          }
         }
     }
   }

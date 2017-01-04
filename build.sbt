@@ -25,6 +25,7 @@ libraryDependencies ++= {
     "org.slf4j" % "slf4j-nop" % "1.6.4",
     "com.typesafe.slick" %% "slick-hikaricp" % slickV,
     "com.h2database" % "h2" % "1.4.193",
+    "mysql" % "mysql-connector-java" % "5.1.40",
     "org.flywaydb" % "flyway-core" % "3.2.1",
     "org.scalatest"     %% "scalatest" % scalaTestV % "test"
   )
