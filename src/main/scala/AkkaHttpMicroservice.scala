@@ -22,7 +22,7 @@ object AkkaHttpMicroservice extends App {
     new DatabaseService(
       dbConfig.getString("url"), dbConfig.getString("user"), dbConfig.getString("password"), MySQLProfile)
   } else {
-    val dbConfig = cfServicesHelper.getConfigFor("p-mysql", "sampledb")
+    val dbConfig = cfServicesHelper.getConfigFor("p-mysql", "mydb")
     new DatabaseService(
       dbConfig.getString("jdbcUrl"), dbConfig.getString("username"), dbConfig.getString("password"), MySQLProfile)
   }
