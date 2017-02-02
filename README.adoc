@@ -29,6 +29,15 @@ $ sbt
 
 ### Create a Hotel
 
+Assuming that https://httpie.org/[httpie] is installed in your machine
+
+[source]
+----
+http POST 'http://localhost:8080/hotels' state="ct" name="Stamford Hotel" zip="00001" address="Stamford"
+----
+
+OR Using CURL:
+
 [source, java]
 ----
 curl -X "POST" "http://localhost:8080/hotels" \
@@ -44,12 +53,25 @@ curl -X "POST" "http://localhost:8080/hotels" \
 
 ### Get All Hotels
 
+[source]
+----
+http GET 'http://localhost:8080/hotels'
+----
+
+OR
+
 [source, java]
 ----
 curl -X "GET" "http://localhost:8080/hotels"
 ----
 
 ### Get A Hotel
+[source]
+----
+http GET 'http://localhost:8080/hotels/1'
+----
+
+OR
 
 [source, java]
 ----
@@ -57,6 +79,13 @@ curl -X "GET" "http://localhost:8080/hotels/1"
 ----
 
 ### Update Hotel
+
+[source, java]
+----
+http PUT 'http://localhost:8080/hotels/1' state="ct" name="Stamford Hotel Updated" zip="97006" address="Stamford"
+----
+
+OR
 
 [source, java]
 ----
@@ -74,6 +103,13 @@ curl -X "PUT" "http://localhost:8080/hotels/1" \
 ----
 
 ### Delete Hotel
+
+[source, java]
+----
+http DELETE 'http://localhost:8080/hotels/1'
+----
+
+OR
 
 [source, java]
 ----
